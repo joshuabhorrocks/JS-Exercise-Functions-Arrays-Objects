@@ -1,5 +1,5 @@
 // ⭐️ Example Challenge start ⭐️
-
+const inventory = require("./data/inventory.js");
 /**
  * ### Challenge `addNumbers`
  * 
@@ -202,7 +202,7 @@ function sortCarInventory(inventory) {
     newArr.push(inventory[i]["car_model"])
   }
   newArr.sort()
-  return newArr
+  return newArr //Should be good code
 }
 /**
  * ### Challenge `getModelYears`
@@ -234,7 +234,18 @@ function getModelYears(inventory) {
  * in the same order as they appear in the original inventory.
 */
 function getOlderCars(inventory, max) {
-  /* code here */
+  let newArr = [];
+  //let testArr = []
+  for(let i = 0; i < inventory.length; i++) {
+    if(inventory[i].car_year < max) {
+      newArr.push(inventory[i].car_year)
+    }
+    newArr.push(inventory[i].max) 
+  }
+  return newArr;
+  //return testArr;
+
+  //CODE IS GOOD
 }
 
 /**
@@ -248,8 +259,15 @@ function getOlderCars(inventory, max) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  let newArr = []
+  for(let i = 0; i< inventory.length; i++) {
+    if(inventory[i].car_make === "Audi", "Mercedes-Benz", "Volkswagen", "BMW")
+      newArr.unshift(inventory[i].car_make)
+    } 
+  return newArr;
+
+  //Pretty sure this is good code
 }
 
 /**
@@ -270,9 +288,15 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a, b) => {
+  return a + b;
+}
+const addFive = (num) => {
+  return num + 5;
+}
+const argTimesTwo = (num) => {
+  return num * 2;
+}
 
 /**
  * ### Challenge `carMaker`
