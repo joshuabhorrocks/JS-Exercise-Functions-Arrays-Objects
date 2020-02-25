@@ -197,12 +197,15 @@ function getCarInfoById(inventory, id) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
 function sortCarInventory(inventory) {
-  let newArr = [];
-  for(let i = 0; i < inventory.length; i++) {
-    newArr.push(inventory[i]["car_model"])
-  }
-  newArr.sort()
-  return newArr //Should be good code
+  return inventory.sort((a,z) =>{
+    if(a.car_model < z.car_model) {
+      return -1;
+    }
+    if(a.car_model > z.car_model){
+      return 1;
+    }
+    return 0;
+  }) //Should be good code
 }
 /**
  * ### Challenge `getModelYears`
@@ -233,19 +236,15 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(inventory, max) {
-  let newArr = [];
-  //let testArr = []
+function getOlderCars(inventory, maxYear) {
+  let max = [];
   for(let i = 0; i < inventory.length; i++) {
-    if(inventory[i].car_year < max) {
-      newArr.push(inventory[i].car_year)
+    if(inventory[i].car_year <= maxYear) {
+      max.push(inventory[i]) 
     }
-    newArr.push(inventory[i].max) 
   }
-  return newArr;
-  //return testArr;
+  return max;
 
-  //CODE IS GOOD
 }
 
 /**
@@ -260,14 +259,16 @@ function getOlderCars(inventory, max) {
  * in the same order as they appear in the original inventory.
 */
 function getGermanCars(inventory) {
-  let newArr = []
-  for(let i = 0; i< inventory.length; i++) {
-    if(inventory[i].car_make === "Audi", "Mercedes-Benz", "Volkswagen", "BMW")
-      newArr.unshift(inventory[i].car_make)
-    } 
+  let newArr =[];
+  for(let i=0; i<inventory.length; i++) {
+    if(inventory[i].car_make === `Audi` ||
+      inventory[i].car_make === `Mercedes-Benz` ||
+      inventory[i].car_make === `Volkswagon` ||
+      inventory[i].car_make === `BMW`){
+        newArr.push(inventory[i])
+    }
+  }
   return newArr;
-
-  //Pretty sure this is good code
 }
 
 /**
